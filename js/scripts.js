@@ -14,5 +14,7 @@ for (var i = 0; i < clientes.length; i++){
     var quantidade = clientes[i].querySelector(".qtde").textContent;
     var valor = clientes[i].querySelector(".valor").textContent;
 
-    clientes[i].querySelector(".total").textContent = quantidade * valor;
+    var total = quantidade * valor;
+
+    clientes[i].querySelector(".total").textContent = total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
 }
