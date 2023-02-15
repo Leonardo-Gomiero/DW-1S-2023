@@ -2,30 +2,17 @@ var titulo = document.querySelector(".titulo");
 titulo.textContent = "Lista de Encomendas";
 
 //Captura os dados do cliente
-var cliente = document.querySelector(".cliente1");
+var clientes = document.querySelectorAll(".cliente");
+var totais = document.querySelectorAll(".total");
 
-//Captura a quantidade de encomenda
-var valor = cliente.querySelector(".valor").textContent;
-var qtde = cliente.querySelector(".qtde").textContent;
+console.log(clientes);
 
-total = valor * qtde;
+for (var i = 0; i < clientes.length; i++){
+    console.log(clientes[i].querySelector(".qtde").textContent);
+    console.log(clientes[i].querySelector(".valor").textContent);
 
-cliente = document.querySelector(".cliente2");
-valor = cliente.querySelector(".valor").textContent;
-qtde = cliente.querySelector(".qtde").textContent;
+    var quantidade = clientes[i].querySelector(".qtde").textContent;
+    var valor = clientes[i].querySelector(".valor").textContent;
 
-total += valor*qtde;
-
-cliente = document.querySelector(".cliente3");
-valor = cliente.querySelector(".valor").textContent;
-qtde = cliente.querySelector(".qtde").textContent;
-
-total += valor*qtde;
-
-cliente = document.querySelector(".cliente4");
-valor = cliente.querySelector(".valor").textContent;
-qtde = cliente.querySelector(".qtde").textContent;
-
-total += valor*qtde;
-
-console.log("Total a ser pago: R$" + total)
+    clientes[i].querySelector(".total").textContent = quantidade * valor;
+}
