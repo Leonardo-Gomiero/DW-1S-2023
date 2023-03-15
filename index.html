@@ -24,7 +24,7 @@
 
 <body>
     <header>
-        
+
         <nav id="menu">
             <ul type="disc">
                 <li><a href="index.html"><img id="logo" src="images/logo.png" alt=""></a></li>
@@ -35,19 +35,19 @@
                 -->
             </ul>
         </nav>
-        
+
     </header>
 
-    
+
     <body>
 
-        
+
         <div class="content">
 
             <div class="container">
                 <h1 class="titulo">Encomendas</h1>
                 <div class="table-responsive">
-                    
+
 
                     <table class="table table-striped custom-table">
                         <thead>
@@ -62,45 +62,33 @@
                         </thead>
                         <tbody>
 
-                            <tr class="cliente">
-
-                                <td>Margarete</td>
-                                <td>Jogo Americano (4 peças) - Rosa</td>
+                            <tr class="cliente" id="cliente1">
+                                <td class="nome">Margarete</td>
+                                <td class="produto">Jogo Americano (4 peças) - Rosa</td>
                                 <td class="qtde">1</td>
-                                <td class="valor">30.00</td>
+                                <td class="valor">30</td>
                                 <td class="total">0</td>
-
                             </tr>
-
-                            <tr class="cliente">
-
-                                <td>Cleide</td>
-                                <td>Tapetes Cozinha (3 peças) - Azul</td>
+                            <tr class="cliente" >
+                                <td class="nome">Carolina</td>
+                                <td class="produto">Tapetes Cozinha (3 peças) - Azul</td>
                                 <td class="qtde">2</td>
-                                <td class="valor">50.00</td>
+                                <td class="valor">50</td>
                                 <td class="total">0</td>
-
                             </tr>
-
-                            <tr class="cliente">
-
-                                <td>Angelo</td>
-                                <td>Pulseira Cristal Colorida</td>
-                                <td class="qtde">3</td>
-                                <td class="valor">25.00</td>
+                            <tr class="cliente" >
+                                <td class="nome">Daniele</td>
+                                <td class="produto">Pulseira Cristal Colorida</td>
+                                <td class="qtde">2</td>
+                                <td class="valor">25</td>
                                 <td class="total">0</td>
-
                             </tr>
-
-
-                            <tr class="cliente">
-
-                                <td>Angelo</td>
-                                <td>Pulseira Cristal Vermelha</td>
+                            <tr class="cliente" >
+                                <td class="nome">Daniele</td>
+                                <td class="produto">Pulseira Cristal Vermelha</td>
                                 <td class="qtde">1</td>
-                                <td class="valor">25.00</td>
+                                <td class="valor">25</td>
                                 <td class="total">0</td>
-
                             </tr>
 
                         </tbody>
@@ -110,12 +98,51 @@
 
             </div>
 
-        </div>
+            <section class="container">
+                <h1 class="titulo2">Adicionar nova Encomenda</h1>
+                <form>
+                    <fieldset id="dados-pedido">
+                        <div>
+                            <label id="lbl-nome">Nome:</label>
+                            <input type="text" name="name" id="nome" placeholder="Digite o nome do(a) cliente">
+                        </div>
+                        <div>
+                            <label id="lbl-qtde">Qtde:</label>
+                            <input type="number" name="quantityName" id="quantit"
+                                placeholder="Digite a quantidade encomendada">
+                        </div>
+                        <div>
+                            <label id="lbl-produto">Produto:</label>
+                            <select id="produto">
+                                <option>Selecione</option>
+                                <option>Jogo Americano (4 peças) - Rosa</option>
+                                <option>Jogo Americano (4 peças) - Amarelo</option>
+                                <option>Jogo Americano (4 peças) - Verde</option>
+                                <option>Tapetes Cozinha (3 peças) - Azul</option>
+                                <option>Tapetes Cozinha (3 peças) - Rosa</option>
+                                <option>Tapetes Cozinha (3 peças) - Amarelo</option>
+                                <option>Tapetes Cozinha (3 peças) - Vermelho</option>
+                                <option>Pulseira Cristal - Colorida</option>
+                                <option>Pulseira Cristal - Vermelha</option>
+                                <option>Pulseira Cristal - Rosa</option>
+                                <option>Pulseira Cristal - Lilás</option>
+                                <option>Pulseira Cristal - Preta</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label id="lbl-unidade">R$ Unitário:</label>
+                            <input type="number" name="value" id="value"
+                                placeholder="Digite o valor unitário do produto">
+                        </div>
+                    </fieldset>
 
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/main.js"></script>
+                    <button id="id-botao" class="botao">Clique aqui</button>
+                </form>
+            </section>
+
+
+
+        </div>
 
 
         <script src="js/scripts.js"></script>
