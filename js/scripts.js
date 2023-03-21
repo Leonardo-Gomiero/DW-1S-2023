@@ -15,6 +15,9 @@ var valorUni = document.querySelector("#value");
 var clientes = document.querySelectorAll(".cliente");
 var totais = document.querySelectorAll(".total");
 
+//Armazena a tabela em uma variável
+var tabela = document.querySelector("#tabela");
+
 console.log(clientes);
 
 for (var i = 0; i < clientes.length; i++) {
@@ -40,7 +43,10 @@ for (var i = 0; i < clientes.length; i++) {
     EVENTOS
 ============================*/
 
+//O evento a seguir recebe os valores do forms e adiciona na tabela
 botao.addEventListener("click", function(event){
+
+    
     event.preventDefault();
     console.log("O título foi clicado, hein");
     console.log("Nome: "  + nome.value);
@@ -48,5 +54,32 @@ botao.addEventListener("click", function(event){
     console.log("Produto: "  + produto.value);
     console.log("Valor unitário: "  + valorUni.value);
     
+
+    //Criando uma linha que será adicionada na tabela
+    const linha = document.createElement('tr');
+
+    //Criando colunas que serão adicionadas à linha criada acima
+    const colNome = document.createElement('td');
+    const colProduto = document.createElement('td');
+    const colQuantidade = document.createElement('td');
+    const colValor = document.createElement('td');
+    const colTotal = document.createElement('td');
+
+    //Atribuindo valores às colunas
+    colNome.textContent = nome.value;
+    colProduto.textContent = produto.value;
+    colQuantidade.textContent = quantidadeSel.value;
+    colValor.textContent = valorUni.value;
+    colTotal.textContent = quantidadeSel.value * valorUni.value;
+
+    //Adicionando as colunas à linha
+    linha.appendChild(colNome);
+    linha.appendChild(colProduto);
+    linha.appendChild(colQuantidade);
+    linha.appendChild(colValor);
+    linha.appendChild(colTotal);
+
+    //Adicionando a linha à tabela
+    tabela.appendChild(linha);
 
 })
