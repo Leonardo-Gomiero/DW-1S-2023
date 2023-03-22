@@ -33,7 +33,7 @@ function obtemEncomenda(form) {
 function montaTr(encomenda) {
 
     //Criando uma linha que será adicionada na tabela
-    const linha = document.createElement('tr');
+    const encomendaTr = document.createElement('tr');
 
     //Criando colunas que serão adicionadas à linha criada acima
     const colNome = montaTd(encomenda.nome, 'nome');
