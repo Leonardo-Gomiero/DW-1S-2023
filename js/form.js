@@ -11,12 +11,20 @@ botao.addEventListener("click", function (event) {
     //Armazena o formulário em uma variável
     var form = document.querySelector("#formulario");
 
+    //Valida o formulário
+    var validacao = validaEncomenda(obtemEncomenda(form));
+    if(validacao.length > 0){
+        exibeMensagemErro(validacao);
+        return;
+    }
+
     //Armazena a tabela em uma variável
     var tabela = document.querySelector("#tabela");
 
     tabela.appendChild(montaTr(obtemEncomenda(form)));
 
-
+    //Limpa o formulário
+    form.reset();
 })
 
 
@@ -53,4 +61,30 @@ function montaTd(dados, classe) {
     td.classList.add(classe);
 
     return td;
+}
+
+//Funcao de validacao do preenchimento do formulario
+function validaEncomenda(encomenda){
+    var erros = [];
+
+    if(!validaQtde(encomenda.qtde)){
+        erros.push("A quantidade é inválida");
+    }
+
+    if(!validaUnitario(encomenda.unitario)){
+        erros.push("O valor unitário é inválido");
+    }
+
+    return erros;
+}
+
+//Funcao para exibir as mensagens de erro
+function exibeMensagemErro(erros){
+    var ul = document.querySelector("#mensagens-erro");
+
+    erros.forEach(function(erro){
+        var li = document.createElement("li");
+        li.textContent = erro;
+        ul.appendChild(li);
+    });
 }

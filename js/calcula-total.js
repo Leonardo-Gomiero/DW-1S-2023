@@ -21,22 +21,43 @@ var totais = document.querySelectorAll(".total");
 
 console.log(clientes);
 
-for (var i = 0; i < clientes.length; i++) {
-    console.log("Quantidade:(" + i + "): "  + clientes[i].querySelector(".qtde").textContent);
-    console.log("Valor(" + i + "): "  + clientes[i].querySelector(".valor").textContent);
 
-    var quantidade = clientes[i].querySelector(".qtde").textContent;
-    var valor = clientes[i].querySelector(".valor").textContent;
+for (var i=0; i < clientes.length; i++){
 
-    valor *= 1;
+    var qtd = clientes[i].querySelector(".qtde").textContent;
 
-    clientes[i].querySelector(".valor").textContent = formataValor(valor);
+    var uni = clientes[i].querySelector(".valor").textContent;
 
-    var total = calculaTotal(quantidade, valor);
+        if (!validaQtde(qtd)) {
 
-    clientes[i].querySelector(".total").textContent = calculaTotal(quantidade, valor);
-    console.log("TOTAL: " + total);     
+            clientes[i].querySelector(".qtde").textContent = "Quantidade Inválida"
+            clientes[i].style.backgroundColor = "#e9c13e";
+            //clientes[i].classList.add("erro");
+            //console.log("A quantidade encomendada pelo(a) cliente "+ clientes[i].querySelector(".nome").textContent + " é inválida.")
+        }
+        else {
+
+            //QTDE é válida, verifica o valor unitário
+            if(!validaUnitario(uni)){
+
+                //Aqui se não for válido
+                clientes[i].querySelector(".valor").textContent = "Unitário inválido"
+                clientes[i].style.backgroundColor = "#ee3535";
+                
+            }
+            else {
+                //Exibe o valor total da encomenda
+                clientes[i].querySelector(".total").textContent = calculaTotal(qtd,uni);
+                
+                // Formata o valor unitario
+                clientes[i].querySelector(".valor").textContent = formataValor(uni);
+            }
+        }
 }
+
+
+
+
 
 //Funcao para formatacao de valor
 function formataValor(valor){
@@ -49,4 +70,22 @@ function calculaTotal(qtde, unidade){
     var total = 0;
     total = qtde * unidade;
     return formataValor(total);
+}
+
+//Funcao para validacao da quantidade
+function validaQtde(qtde){
+    if(!isNaN(qtde) && qtde > 0){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+//Funcao para validacao do Valor Unitario
+function validaUnitario(unitario){
+    if(!isNaN(unitario) && unitario > 0){
+        return true;
+    }else {
+        return false;
+    }
 }
