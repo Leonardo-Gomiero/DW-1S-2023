@@ -30,10 +30,23 @@ for (var i = 0; i < clientes.length; i++) {
 
     valor *= 1;
 
-    clientes[i].querySelector(".valor").textContent = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    clientes[i].querySelector(".valor").textContent = formataValor(valor);
 
-    var total = quantidade * valor;
+    var total = calculaTotal(quantidade, valor);
 
-    clientes[i].querySelector(".total").textContent = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    clientes[i].querySelector(".total").textContent = calculaTotal(quantidade, valor);
     console.log("TOTAL: " + total);     
+}
+
+//Funcao para formatacao de valor
+function formataValor(valor){
+    var valor = parseFloat(valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    return valor;
+}
+
+//Funcao para calcular o valor total
+function calculaTotal(qtde, unidade){
+    var total = 0;
+    total = qtde * unidade;
+    return formataValor(total);
 }

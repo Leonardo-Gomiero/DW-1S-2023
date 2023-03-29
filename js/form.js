@@ -25,7 +25,8 @@ function obtemEncomenda(form) {
         nome: form.nome.value,
         produto: form.produto.value,
         qtde: form.quantit.value,
-        unitario: form.value.value,
+        unitario: formataValor(form.value.value),
+        total: calculaTotal(form.quantit.value, form.value.value),
     }
     return encomenda;
 }
@@ -35,19 +36,12 @@ function montaTr(encomenda) {
     //Criando uma linha que será adicionada na tabela
     const encomendaTr = document.createElement('tr');
 
-    //Criando colunas que serão adicionadas à linha criada acima
-    const colNome = montaTd(encomenda.nome, 'nome');
-    const colProduto = montaTd(encomenda.produto, 'produto');
-    const colQuantidade = montaTd(encomenda.qtde, 'quantit');
-    const colValor = montaTd(encomenda.unitario, 'value');
-    const colTotal = montaTd(0, 'total');
-
     //Adicionando as colunas à linha
-    encomendaTr.appendChild(colNome);
-    encomendaTr.appendChild(colProduto);
-    encomendaTr.appendChild(colQuantidade);
-    encomendaTr.appendChild(colValor);
-    encomendaTr.appendChild(colTotal);
+    encomendaTr.appendChild(montaTd(encomenda.nome, 'nome'));
+    encomendaTr.appendChild(montaTd(encomenda.produto, 'produto'));
+    encomendaTr.appendChild(montaTd(encomenda.qtde, 'quantit'));
+    encomendaTr.appendChild(montaTd(encomenda.unitario, 'value'));
+    encomendaTr.appendChild(montaTd(encomenda.total, 'total'));
 
     return encomendaTr;
 
