@@ -22,37 +22,37 @@ var totais = document.querySelectorAll(".total");
 console.log(clientes);
 
 
-for (var i=0; i < clientes.length; i++){
+for (var i = 0; i < clientes.length; i++) {
 
     var qtd = clientes[i].querySelector(".qtde").textContent;
 
-    var uni = clientes[i].querySelector(".valor").textContent;
+    var val = clientes[i].querySelector(".valor").textContent;
 
-        if (!validaQtde(qtd)) {
+    var nome = clientes[i].querySelector(".nome").textContent;
 
-            clientes[i].querySelector(".qtde").textContent = "Quantidade Inválida"
-            clientes[i].style.backgroundColor = "#e9c13e";
-            //clientes[i].classList.add("erro");
-            //console.log("A quantidade encomendada pelo(a) cliente "+ clientes[i].querySelector(".nome").textContent + " é inválida.")
+    if (validaUnitario(val) && validaQtde(qtd)) {
+        clientes[i].querySelector(".valor").textContent = formataValor(val);
+        clientes[i].querySelector(".total").textContent = formataValor(calculaTotal(qtd,val));
+    }
+    else if (!validaUnitario(val) && !validaQtde(qtd)) {
+        clientes[i].querySelector(".valor").textContent = "Valor e quantidade inválidos";
+        clientes[i].querySelector(".total").textContent = "Valor e quantidade inválidos";
+        clientes[i].querySelector(".qtde").textContent = "Valor e quantidade inválidos";
+        clientes[i].classList.add("Invalid");
+    }
+    else {
+        if (!validaUnitario(val)) {
+            clientes[i].querySelector(".valor").textContent = "Valor inválido";
+            clientes[i].querySelector(".total").textContent = "Valor inválido";
+            clientes[i].classList.add("Invalid");
         }
-        else {
 
-            //QTDE é válida, verifica o valor unitário
-            if(!validaUnitario(uni)){
-
-                //Aqui se não for válido
-                clientes[i].querySelector(".valor").textContent = "Unitário inválido"
-                clientes[i].style.backgroundColor = "#ee3535";
-                
-            }
-            else {
-                //Exibe o valor total da encomenda
-                clientes[i].querySelector(".total").textContent = calculaTotal(qtd,uni);
-                
-                // Formata o valor unitario
-                clientes[i].querySelector(".valor").textContent = formataValor(uni);
-            }
+        else if (!validaQtde(qtd)) {
+            clientes[i].querySelector(".qtde").textContent = "Quantidade inválida";
+            clientes[i].querySelector(".total").textContent = "Quantidade inválida";
+            clientes[i].classList.add("Invalid");
         }
+    }
 }
 
 
@@ -61,8 +61,8 @@ for (var i=0; i < clientes.length; i++){
 
 //Funcao para formatacao de valor
 function formataValor(valor){
-    var valor = parseFloat(valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    return valor;
+    var valorFor = parseFloat(valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    return valorFor;
 }
 
 //Funcao para calcular o valor total
