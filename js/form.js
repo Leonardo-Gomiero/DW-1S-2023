@@ -22,6 +22,7 @@ botao.addEventListener("click", function (event) {
     var tabela = document.querySelector("#tabela");
 
     tabela.appendChild(montaTr(obtemEncomenda(form)));
+    apagaErros();
 
     //Limpa o formulário
     form.reset();
@@ -33,7 +34,7 @@ function obtemEncomenda(form) {
         nome: form.nome.value,
         produto: form.produto.value,
         qtde: form.quantit.value,
-        unitario: formataValor(form.value.value),
+        unitario: form.value.value,
         total: calculaTotal(form.quantit.value, form.value.value),
     }
     return encomenda;
@@ -48,7 +49,7 @@ function montaTr(encomenda) {
     encomendaTr.appendChild(montaTd(encomenda.nome, 'nome'));
     encomendaTr.appendChild(montaTd(encomenda.produto, 'produto'));
     encomendaTr.appendChild(montaTd(encomenda.qtde, 'quantit'));
-    encomendaTr.appendChild(montaTd(encomenda.unitario, 'value'));
+    encomendaTr.appendChild(montaTd(formataValor(encomenda.unitario), 'value'));
     encomendaTr.appendChild(montaTd(encomenda.total, 'total'));
 
     return encomendaTr;
@@ -59,21 +60,31 @@ function montaTd(dados, classe) {
     var td = document.createElement('td');
     td.textContent = dados;
     td.classList.add(classe);
-
+    
     return td;
 }
 
 //Funcao de validacao do preenchimento do formulario
 function validaEncomenda(encomenda){
     var erros = [];
+    
+    if(!validaNome(encomenda.nome)){
+        erros.push("Nome inválido");
+    }
 
-    if(!validaQtde(encomenda.qtde)){
+    else if(!validaQtde(encomenda.qtde)){
         erros.push("A quantidade é inválida");
     }
 
-    if(!validaUnitario(encomenda.unitario)){
+    else if(!validaProduto(encomenda.produto)){
+        erros.push("Selecione um produto");
+    }
+
+    else if(!validaUnitario(encomenda.unitario)){
         erros.push("O valor unitário é inválido");
     }
+
+    apagaErros();
 
     return erros;
 }
@@ -85,6 +96,7 @@ function exibeMensagemErro(erros){
     erros.forEach(function(erro){
         var li = document.createElement("li");
         li.textContent = erro;
+        li.style.color = "red";
         ul.appendChild(li);
     });
 }

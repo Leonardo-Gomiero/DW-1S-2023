@@ -66,9 +66,9 @@ function formataValor(valor){
 }
 
 //Funcao para calcular o valor total
-function calculaTotal(qtde, unidade){
+function calculaTotal(qtde, val){
     var total = 0;
-    total = qtde * unidade;
+    total = qtde * val;
     return formataValor(total);
 }
 
@@ -77,15 +77,41 @@ function validaQtde(qtde){
     if(!isNaN(qtde) && qtde > 0){
         return true;
     }else{
+        console.log("Quantidade: " + qtde);
         return false;
     }
 }
 
 //Funcao para validacao do Valor Unitario
-function validaUnitario(unitario){
-    if(!isNaN(unitario) && unitario > 0){
+function validaUnitario(val){
+    if(!isNaN(val) && val > 0){
+        return true;
+    }else {
+        console.log("Valor: " + val);
+        return false;
+    }
+}
+
+function validaProduto(prod){
+    if(prod != "Selecione"){
+        return true;
+    }else {
+        console.log("Produto:" + prod);
+        return false;
+    }
+}
+
+function validaNome(nome){
+    console.log(nome.length)
+    if(isNaN(nome) && nome.length > 0){
         return true;
     }else {
         return false;
     }
+}
+
+//Apagando as mensagens de erro antes de exibir uma nova mensagem:
+function apagaErros(){
+    var ul = document.querySelector("#mensagens-erro");
+    ul.innerHTML = '';
 }
