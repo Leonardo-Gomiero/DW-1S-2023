@@ -7,6 +7,7 @@ tabela.addEventListener("dblclick", function (event) {
 
     //A linha que sofreu o duplo clique sera removida:
     //this.remove();
+    
     event.target.parentNode.classList.add("fadeOut");
     
     setTimeout(function(){
@@ -14,5 +15,5 @@ tabela.addEventListener("dblclick", function (event) {
     }, 600);
     
 
-    //event.target.parentNode.remove();
+   
 });
