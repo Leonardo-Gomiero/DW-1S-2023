@@ -15,10 +15,11 @@ campoFiltro.addEventListener("input", function () {
             var expressao = new RegExp(this.value, "i");
 
 
-            //if (nome != this.value) {
-             
+
             //Expressao Regular do JS
-            if(!expressao.test(nome)){
+
+            //if(nome.substring(0, this.value.length).toLowerCase() != this.value.toLowerCase()){
+            if (!expressao.test(nome)) {
                 //Não é igual, oculta linha
                 cliente.classList.add("invisivel");
 
@@ -27,7 +28,7 @@ campoFiltro.addEventListener("input", function () {
                 cliente.classList.remove("invisivel");
             }
         }
-    }else{
+    } else {
         for (var i = 0; i < clientes.length; i++) {
             var cliente = clientes[i];
             cliente.classList.remove("invisivel");
