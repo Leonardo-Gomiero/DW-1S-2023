@@ -11,23 +11,36 @@ botao.addEventListener("click", function (event) {
     //Armazena o formulário em uma variável
     var form = document.querySelector("#formulario");
 
+    //Captura os campos preenchidos
+    var encomenda = obtemEncomenda(form);
+
     //Valida o formulário
-    var validacao = validaEncomenda(obtemEncomenda(form));
+    var validacao = validaEncomenda(encomenda);
+
     if(validacao.length > 0){
         exibeMensagemErro(validacao);
         return;
     }
 
     //Armazena a tabela em uma variável
-    var tabela = document.querySelector("#tabela");
+    //var tabela = document.querySelector("#tabela");
 
-    tabela.appendChild(montaTr(obtemEncomenda(form)));
+    //tabela.appendChild(montaTr(obtemEncomenda(form)));
+    
+    //Adiciona a nova linha na tabela
+    adicionaEncomendaNaTabela(encomenda);
     apagaErros();
 
     //Limpa o formulário
     form.reset();
 })
 
+function adicionaEncomendaNaTabela(encomenda){
+    var encomendaTr = montaTr(encomenda);
+    var tabela = document.querySelector("#tabela");
+    tabela.appendChild(encomendaTr);
+
+}
 
 function obtemEncomenda(form) {
     var encomenda = {
