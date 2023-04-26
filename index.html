@@ -16,7 +16,12 @@
 
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="images/gato.ico" />
+    <link rel="shortcut icon" href="images/gato.ico"/>
+
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudFlare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <title>SIL</title>
 </head>
 
@@ -28,13 +33,25 @@
         <nav id="menu">
             <ul type="disc">
                 <li><a href="index.html"><img id="logo" src="images/logo.png" alt=""></a></li>
-                <!-- 
-                <li><a href="cardapio.html">Cardápio</a></li>
-                <li><a href="fotos.html">Fotos</a></li>
-                <li><a href="contatoNovo.html">Contato</a></li>
-                -->
+                
             </ul>
         </nav>
+        <div class="menu">
+            <div class="overLay" id="nav">
+                <a href="#" class="closeBtn" onClick="closeNav()">&times;</a>
+                <div class="overLay-content">
+                    <a href="#" class="fa fa-home" aria-hidden="true"> Home</a>
+                    <a href="#" class="fa fa-heart" aria-hidden="true"> Sobre</a>
+                    <a href="#" class="fa fa-shopping-bag" aria-hidden="true"> Encomendas</a>
+                    <a href="#" class="fa fa-phone-square" aria-hidden="true"> Contato</a>
+                </div>
+            </div>
+            <button class="nav-button" onClick="openNav()">
+                <i class="fa-solid fa-bars fa-2x">
+                </i>
+            </button>            
+        </div>
+        
 
     </header>
 
@@ -154,6 +171,7 @@
         <script src="js/remover-encomenda.js"></script>
         <script src="js/filtra.js"></script>
         <script src="js/busca-encomenda.js"></script>
+        <script src="js/menu.js"></script>
 
     </body>
 
